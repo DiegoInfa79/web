@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../CSS/index.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet Routing Machine CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+</head>
+<body>
+  <header>
+   <div class="container">
+    <div class="logo">El Taller Digital</div>
+    <nav>
+      <a href="../index.html">Inicio</a>
+      <a href="galeria.html">Galería</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="#" class="active">Contacto</a>
+    </nav>
+    </div> 
+  </header>
+  
+  <!--Sección Info-->
+  
+  <section id="Info">
+    <h1>Contacto</h1>
+    <p><strong>Dirección:</strong> Carrer del dos de Maig 302, Barcelona</p>
+    <p><strong>Email:</strong> El-Taller-Digital@empresa.com</p>
+    <p><strong>Teléfono:</strong> +34 123456789</p>
+
+
+    <h2>¿Cómo llegar?</h2>
+    <p class="map-intro">Introduce tu dirección para calcular la mejor ruta hacia nuestra ubicación.</p>
+
+    <input type="text" id="startLocation" placeholder="Ej. Calle Mayor, Barcelona" />
+    <button onclick="calculateRoute()">Calcular Ruta</button>
+
+    <div id="map"></div>
+    
+</section>
+
+  <!-- Leaflet JS -->
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Leaflet Routing Machine JS -->
+
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+
+  <script>
+    const businessCoords = [41.407742, 2.181320]; // Coordenadas de Carrer del dos de Maig 302
+
+    const map = L.map('map').setView(businessCoords, 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.marker(businessCoords).addTo(map)
+      .bindPopup('Nuestro negocio')
+      .openPopup();
+
+    let control;
+
+    function calculateRoute() {
+      const startLocation = document.getElementById('startLocation').value;
+      if (!startLocation) {
+        alert("Por favor, introduce una dirección de origen.");
+        return;
+      }
+
+      // Usa la API de Nominatim para convertir la dirección en coordenadas
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(startLocation)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (!data || data.length === 0) {
+            alert("No se pudo encontrar la ubicación introducida.");
+            return;
+          }
+
+          const userCoords = [parseFloat(data[0].lat), parseFloat(data[0].lon)];
+
+          if (control) {
+            map.removeControl(control);
+          }
+
+          control = L.Routing.control({
+            waypoints: [
+              L.latLng(userCoords[0], userCoords[1]),
+              L.latLng(businessCoords[0], businessCoords[1])
+            ],
+            routeWhileDragging: false
+          }).addTo(map);
+        })
+        .catch(error => {
+          console.error("Error al geocodificar la dirección:", error);
+        });
+    }
+  </script>
+
+  <!--footer-->
+
+  <footer>
+    <div class="social">
+      <a href="https://facebook.com"><img src="../imagenes/f2.png" alt=""></a></a>
+      <a href="https://twitter.com"><img src="../imagenes/x.png" alt=""></a>
+      <a href="https://instagram.com"><img src="../imagenes/insta.png" alt=""></a>
+    </div>
+    <p><a href="#">Aviso Legal</a></p>
+  </footer>
+</body>
+</html>

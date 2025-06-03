@@ -1,0 +1,23 @@
+[
+  {
+    "titulo": "Nueva sede de El Taller Digital en Madrid",
+    "fecha": "2025-05-30",
+    "descripcion": "Abrimos un nuevo punto de servicio con laboratorio propio y recogida express."
+  },
+  {
+    "titulo": "Promoción de verano: 20 % de descuento en reparaciones",
+    "fecha": "2025-05-15",
+    "descripcion": "Durante todo junio ofrecemos un 20 % de descuento en cambio de pantallas y baterías."
+  },
+  {
+    "titulo": "Guía gratuita de mantenimiento preventivo",
+    "fecha": "2025-04-10",
+    "descripcion": "Descarga gratis nuestra guía para prolongar la vida de tu portátil."
+  },
+  {
+    "titulo": "Nvidia presenta las nuevas gráficas GeForce RTX serie 50",
+    "fecha": "2025-01-07",
+    "descripcion": "Ahora tenemos disponible las nuevas tarjetas graficas de nvidia de su nueva serie 50."
+  }
+
+]
