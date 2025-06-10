@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Presupuesto</title>
+<link rel="stylesheet" href="../CSS/index.css">
+<script defer src="../Js/script.js"></script>
+</head>
+<body>
+
+  <!--Header-->
+  <header>
+    <div class="container">
+       <p class="logo">El Taller Digital</p>
+     <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="galeria.html">Galería</a>
+        <a href="#" class="active">Presupuesto</a>
+        <a href="contacto.html">Contacto</a>
+     </nav>
+    </div>
+  </header>
+ 
+  <div class="Fondo">
+    <div class="PresupuestoTitulo">
+      <h2>Formulario de Presupuesto</h2>
+    </div>
+
+    <form id="presupuestoForm">
+
+      <!-- Datos de contacto -->
+      <fieldset>
+        <legend>Datos de Contacto</legend>
+
+        <label>Nombre:
+          <input type="text" id="nombre" maxlength="15" required>
+        </label>
+
+        <label>Apellidos:
+          <input type="text" id="apellidos" maxlength="40" required>
+        </label>
+
+        <label>Teléfono:
+          <input type="text" id="telefono" maxlength="9" required>
+        </label>
+
+        <label>Correo electrónico:
+          <input type="email" id="email" required>
+        </label>
+      </fieldset>
+
+      <!-- Presupuesto -->
+      <fieldset>
+        <legend>Presupuesto</legend>
+        <p>Ofrecemos un descuento del 10% si el plazo es mayor a 6 meses</p>
+        <label>Producto:
+          <select id="producto" required>
+            <option value="" disabled selected hidden>Seleccione un producto</option>
+            <option value="100">CPU gama entrada - 100€</option>
+            <option value="200">CPU gama media - 200€</option>
+            <option value="300">CPU gama alta - 300€</option>
+          </select>
+        </label>
+
+        <label>Plazo de entrega (meses):
+          <input type="number" id="plazo" min="1" max="24" value="1">
+        </label>
+
+        <label>Extras:</label>
+        <label><input type="checkbox" class="extra" value="20"> Envío rápido (+20€)</label>
+        <label><input type="checkbox" class="extra" value="30"> Garantía extendida (+30€)</label>
+        <label><input type="checkbox" class="extra" value="50"> Instalación incluida (+50€)</label>
+
+        <p class="total">Presupuesto total: <span id="total">0</span> €</p>
+      </fieldset>
+
+      <!-- Condiciones -->
+      <fieldset>
+        <legend>Condiciones</legend>
+        <label><input type="checkbox" id="condiciones" required> Acepto las condiciones de privacidad</label>
+      </fieldset>
+
+      <button type="submit">Enviar</button>
+      <button type="reset">Resetear</button>
+    </form>
+
+ <!--Footer-->
+ 
+ <footer>
+    <div class="social">
+    <a href="https://www.facebook.com" target="_blank"><img src="../imagenes/f2.png" alt=""></a>
+    <a href="http://www.x.com" target="_blank"><img src="../imagenes/x.png" alt=""></a>
+    <a href="http://instagram.com" target="_blank"><img src="../imagenes/insta.png" alt=""></a>
+    </div>
+    <p><a href="#">Aviso Legal</a></p>
+  </footer>
+  </div>
+</body>
+</html>
